@@ -1,0 +1,60 @@
+{
+  "name": "electron-vue-vite",
+  "version": "0.0.0",
+  "main": "electron/main.js",
+  "description": "electron + vue3 + vite",
+  "author": "LRC",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "electron:start": "chcp 65001 && cross-env NODE_ENV=development electron .",
+    "electron:build": "cross-env NODE_ENV=production && vite build && electron-builder",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "build": {
+    "productName": "project",
+    "appId": "202210101000",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "public/**/*"
+    ],
+    "win": {
+      "icon": "public/favicon.ico",
+      "requestedExecutionLevel": "highestAvailable",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "public/favicon.ico",
+      "uninstallerIcon": "public/favicon.ico",
+      "installerHeaderIcon": "public/favicon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "extraResources": [
+      {
+        "from": "extraResources",
+        "to": "extraResources"
+      }
+    ]
+  },
+  "dependencies": {
+    "pinia": "^2.0.21",
+    "vue": "^3.2.38",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.3",
+    "cross-env": "^7.0.3",
+    "electron": "^21.1.0",
+    "electron-builder": "^23.6.0",
+    "electron-reloader": "^1.2.3",
+    "vite": "^3.0.9"
+  }
+}
